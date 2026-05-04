@@ -1,0 +1,125 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@renderer/stores/auth.store'
+import { Store, Eye, EyeOff } from 'lucide-vue-next'
+
+const router = useRouter()
+const authStore = useAuthStore()
+
+const username = ref('')
+const password = ref('')
+const showPassword = ref(false)
+const loading = ref(false)
+const error = ref('')
+
+async function login(): Promise<void> {
+  if (!username.value || !password.value) {
+    error.value = 'Please enter username and password'
+    return
+  }
+
+  loading.value = true
+  error.value = ''
+
+  try {
+    const result = await window.electron.ipcRenderer.invoke(
+      'auth:login',
+      username.value,
+      password.value
+    )
+    if (result.success) {
+      authStore.setAuth(result.user, result.business)
+      router.push('/dashboard')
+    } else {
+      error.value = result.error
+    }
+  } catch {
+    error.value = 'Login failed. Please try again.'
+  } finally {
+    loading.value = false
+  }
+}
+</script>
+
+<template>
+  <div class="h-screen w-screen bg-slate-50 flex items-center justify-center">
+    <div class="w-full max-w-sm">
+      <!-- Logo -->
+      <div class="flex flex-col items-center mb-8">
+        <div class="w-14 h-14 rounded-xl bg-blue-600 flex items-center justify-center mb-4">
+          <Store class="w-8 h-8 text-white" />
+        </div>
+        <h1 class="text-xl font-semibold text-slate-900">RetailPOS</h1>
+        <p class="text-sm text-slate-500">Sign in to your account</p>
+      </div>
+
+      <!-- Login Card -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <form class="space-y-4" @submit.prevent="login">
+          <div>
+            <label class="text-sm font-medium text-slate-700 mb-1.5 block">Username</label>
+            <input
+              v-model="username"
+              type="text"
+              placeholder="Enter username"
+              autofocus
+              class="w-full h-10 px-3 border border-slate-300 rounded-md text-sm focus:border-blue-400"
+            />
+          </div>
+
+          <div>
+            <label class="text-sm font-medium text-slate-700 mb-1.5 block">Password</label>
+            <div class="relative">
+              <input
+                v-model="password"
+                :type="showPassword ? 'text' : 'password'"
+                placeholder="Enter password"
+                class="w-full h-10 px-3 pr-10 border border-slate-300 rounded-md text-sm focus:border-blue-400"
+              />
+              <button
+                type="button"
+                class="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                @click="showPassword = !showPassword"
+              >
+                <EyeOff v-if="showPassword" class="w-4 h-4" />
+                <Eye v-else class="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          <p v-if="error" class="text-sm text-red-600">{{ error }}</p>
+
+          <button
+            type="submit"
+            :disabled="loading"
+            class="w-full h-10 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+          >
+            <svg
+              v-if="loading"
+              class="animate-spin h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              />
+            </svg>
+            {{ loading ? 'Signing in...' : 'Sign In' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
