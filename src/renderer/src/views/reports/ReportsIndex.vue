@@ -66,7 +66,7 @@ const reportCards: ReportCard[] = [
       <div
         v-for="card in reportCards"
         :key="card.label"
-        class="bg-white border border-slate-200 rounded-lg p-5 hover:border-blue-200 hover:shadow-sm cursor-pointer transition-all duration-150 flex items-start gap-4"
+        class="bg-white border border-slate-200 rounded-lg p-5 hover:border-blue-200 cursor-pointer transition-all duration-150 flex items-start gap-4"
       >
         <div
           class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"

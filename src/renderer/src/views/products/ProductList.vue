@@ -58,10 +58,7 @@ function formatCurrency(amount: number): string {
         <h1 class="text-xl font-bold text-slate-900">Products</h1>
         <p class="text-[13px] text-slate-500 mt-0.5">{{ total }} products total</p>
       </div>
-      <button
-        class="h-9 px-4 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all duration-150 active:scale-[0.98] shadow-sm flex items-center gap-2"
-        @click="router.push('/products/create')"
-      >
+      <button class="btn-primary" @click="router.push('/products/create')">
         <Plus class="w-4 h-4" />
         Add Product
       </button>
@@ -182,13 +179,13 @@ function formatCurrency(amount: number): string {
             </td>
             <td class="px-4 py-3 text-right">
               <span
-                class="text-[11px] font-semibold px-2 py-0.5 rounded-full"
+                class="badge"
                 :class="
                   product.stockQuantity > 10
-                    ? 'bg-green-50 text-green-700 ring-1 ring-inset ring-green-200'
+                    ? 'badge-success'
                     : product.stockQuantity > 0
-                      ? 'bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-200'
-                      : 'bg-red-50 text-red-700 ring-1 ring-inset ring-red-200'
+                      ? 'badge-warning'
+                      : 'badge-danger'
                 "
               >
                 {{ product.stockQuantity }}

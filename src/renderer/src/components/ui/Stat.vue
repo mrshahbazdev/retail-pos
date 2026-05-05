@@ -14,7 +14,7 @@ defineProps<Props>()
 
 <template>
   <div
-    class="bg-white border border-slate-200 rounded-lg p-5 transition-all duration-150 hover:shadow-sm hover:border-slate-300"
+    class="bg-white border border-slate-200 rounded-lg p-5 transition-all duration-150 hover:border-slate-300"
   >
     <div class="flex items-center justify-between mb-3">
       <span class="text-[13px] font-medium text-slate-500">{{ label }}</span>

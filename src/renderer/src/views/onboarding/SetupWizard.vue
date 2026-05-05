@@ -213,7 +213,7 @@ function goToDashboard(): void {
       </div>
 
       <!-- Card -->
-      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
         <!-- Step 1: Business Type & Name -->
         <div v-if="step === 1" class="p-8">
           <h1 class="text-xl font-semibold text-slate-900 mb-1">Welcome to RetailPOS</h1>
@@ -412,12 +412,7 @@ function goToDashboard(): void {
           <p class="text-sm text-slate-500 mb-6">
             Your {{ businessName }} POS system is ready. Start adding products and making sales.
           </p>
-          <button
-            class="h-10 px-6 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-150 active:scale-[0.98] shadow-sm"
-            @click="goToDashboard"
-          >
-            Go to Dashboard
-          </button>
+          <button class="btn-primary h-10 px-6" @click="goToDashboard">Go to Dashboard</button>
         </div>
 
         <!-- Footer Navigation -->
@@ -438,7 +433,7 @@ function goToDashboard(): void {
           <button
             v-if="step < 3"
             :disabled="!canProceed"
-            class="flex items-center gap-1 h-9 px-5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 active:scale-[0.98] shadow-sm"
+            class="btn-primary h-9 px-5 text-sm"
             @click="step++"
           >
             Continue
@@ -448,7 +443,7 @@ function goToDashboard(): void {
           <button
             v-if="step === 3"
             :disabled="!canProceed || loading"
-            class="flex items-center gap-2 h-9 px-5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 active:scale-[0.98] shadow-sm"
+            class="btn-primary h-9 px-5 text-sm"
             @click="completeSetup"
           >
             <svg

@@ -233,7 +233,7 @@ async function saveProduct(): Promise<void> {
         <button
           type="submit"
           :disabled="loading || !form.name"
-          class="h-9 px-5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all duration-150 active:scale-[0.98] shadow-sm flex items-center gap-2"
+          class="btn-primary h-9 px-5 text-sm"
         >
           <Save class="w-4 h-4" />
           {{ loading ? 'Saving...' : 'Save Product' }}

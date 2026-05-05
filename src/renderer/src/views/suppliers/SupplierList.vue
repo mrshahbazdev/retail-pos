@@ -9,9 +9,7 @@ import { Truck, Plus } from 'lucide-vue-next'
         <h1 class="text-xl font-bold text-slate-900">Suppliers</h1>
         <p class="text-[13px] text-slate-500 mt-0.5">Manage your product suppliers</p>
       </div>
-      <button
-        class="h-9 px-4 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all duration-150 active:scale-[0.98] shadow-sm flex items-center gap-2"
-      >
+      <button class="btn-primary">
         <Plus class="w-4 h-4" />
         Add Supplier
       </button>
