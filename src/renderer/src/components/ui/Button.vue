@@ -19,20 +19,26 @@ const props = withDefaults(defineProps<Props>(), {
 
 const classes = computed(() => {
   const sizes = {
-    sm: 'h-8 px-3 text-xs',
-    md: 'h-9 px-4 text-sm',
-    lg: 'h-11 px-6 text-sm'
+    sm: 'btn-sm',
+    md: '',
+    lg: 'btn-lg'
   }
 
   const variants = {
-    primary: 'btn--primary',
-    secondary: 'btn--secondary',
-    ghost: 'btn--ghost',
-    danger: 'btn--danger',
-    success: 'btn--success'
+    primary: 'btn-primary',
+    secondary: 'btn-outline-secondary',
+    ghost: 'btn-link text-slate-600',
+    danger: 'btn-danger',
+    success: 'btn-success'
   }
 
-  return ['btn', sizes[props.size], variants[props.variant], props.fullWidth && 'w-full']
+  return [
+    'btn',
+    sizes[props.size],
+    variants[props.variant],
+    props.fullWidth && 'w-100',
+    'd-inline-flex align-items-center justify-content-center gap-2'
+  ]
     .filter(Boolean)
     .join(' ')
 })

@@ -25,6 +25,7 @@
     "@electron-toolkit/utils": "^4.0.0",
     "@vueuse/core": "^14.3.0",
     "better-sqlite3": "^12.9.0",
+    "bootstrap": "^5.3.8",
     "dayjs": "^1.11.20",
     "drizzle-orm": "^0.45.2",
     "lucide-vue-next": "^1.0.0",

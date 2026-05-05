@@ -59,7 +59,10 @@ function logout(): void {
   >
     <!-- Logo -->
     <div class="flex items-center gap-3 px-4 h-16 border-b border-slate-100">
-      <div class="icon-box icon-box-md icon-box-primary">
+      <div
+        class="d-flex align-items-center justify-content-center rounded-2 flex-shrink-0 bg-primary text-white"
+        style="width: 36px; height: 36px"
+      >
         <Store class="w-5 h-5 text-white" />
       </div>
       <div v-if="!collapsed" class="flex flex-col overflow-hidden">

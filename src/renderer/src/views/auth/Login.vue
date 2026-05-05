@@ -47,7 +47,10 @@ async function login(): Promise<void> {
     <div class="w-full max-w-sm px-4">
       <!-- Logo -->
       <div class="flex flex-col items-center mb-8">
-        <div class="icon-box icon-box-lg icon-box-primary mb-4">
+        <div
+          class="d-flex align-items-center justify-content-center rounded-3 bg-primary text-white mb-4"
+          style="width: 56px; height: 56px"
+        >
           <Store class="w-7 h-7 text-white" />
         </div>
         <h1 class="text-xl font-bold text-slate-900">RetailPOS</h1>
@@ -96,7 +99,12 @@ async function login(): Promise<void> {
             <p class="text-sm text-red-600">{{ error }}</p>
           </div>
 
-          <button type="submit" :disabled="loading" class="btn-primary w-full h-10">
+          <button
+            type="submit"
+            :disabled="loading"
+            class="btn btn-primary w-full d-flex align-items-center justify-content-center gap-2"
+            style="height: 40px"
+          >
             <svg
               v-if="loading"
               class="animate-spin h-4 w-4"
