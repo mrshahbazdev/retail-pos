@@ -16,15 +16,15 @@ const props = withDefaults(defineProps<Props>(), {
 const classes = computed(() => {
   const base = 'inline-flex items-center gap-1.5 font-medium rounded-full'
   const sizes = {
-    sm: 'px-2 py-0.5 text-xs',
+    sm: 'px-2 py-0.5 text-[11px]',
     md: 'px-2.5 py-1 text-xs'
   }
   const variants = {
-    default: 'bg-slate-100 text-slate-700',
-    success: 'bg-green-50 text-green-700',
-    danger: 'bg-red-50 text-red-700',
-    warning: 'bg-amber-50 text-amber-700',
-    info: 'bg-cyan-50 text-cyan-700'
+    default: 'bg-slate-100 text-slate-600 ring-1 ring-inset ring-slate-200',
+    success: 'bg-green-50 text-green-700 ring-1 ring-inset ring-green-200',
+    danger: 'bg-red-50 text-red-700 ring-1 ring-inset ring-red-200',
+    warning: 'bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-200',
+    info: 'bg-cyan-50 text-cyan-700 ring-1 ring-inset ring-cyan-200'
   }
   const dotColors = {
     default: 'bg-slate-400',

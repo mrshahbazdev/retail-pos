@@ -9,10 +9,18 @@ import {
   Users,
   Globe,
   Barcode,
-  Bell
+  Bell,
+  type LucideIcon
 } from 'lucide-vue-next'
 
-const settingsGroups = [
+interface SettingsGroup {
+  icon: LucideIcon
+  label: string
+  description: string
+  color: string
+}
+
+const settingsGroups: SettingsGroup[] = [
   {
     icon: Store,
     label: 'Business Profile',
@@ -79,14 +87,14 @@ const settingsGroups = [
 <template>
   <div class="space-y-5">
     <div>
-      <h1 class="text-xl font-semibold text-slate-900">Settings</h1>
-      <p class="text-sm text-slate-500">Configure your POS system</p>
+      <h1 class="text-xl font-bold text-slate-900">Settings</h1>
+      <p class="text-[13px] text-slate-500 mt-0.5">Configure your POS system</p>
     </div>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
       <div
         v-for="group in settingsGroups"
         :key="group.label"
-        class="bg-white border border-slate-200 rounded-lg p-4 flex items-start gap-4 hover:border-blue-300 hover:shadow-sm cursor-pointer transition-all"
+        class="bg-white border border-slate-200 rounded-lg p-4 flex items-start gap-4 hover:border-blue-200 hover:shadow-sm cursor-pointer transition-all duration-150"
       >
         <div
           class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -95,8 +103,8 @@ const settingsGroups = [
           <component :is="group.icon" class="w-5 h-5" />
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-slate-800">{{ group.label }}</h3>
-          <p class="text-xs text-slate-500 mt-0.5">{{ group.description }}</p>
+          <h3 class="text-[13px] font-semibold text-slate-800">{{ group.label }}</h3>
+          <p class="text-[11px] text-slate-400 mt-0.5">{{ group.description }}</p>
         </div>
       </div>
     </div>

@@ -1,15 +1,20 @@
 <script setup lang="ts">
 interface Props {
   padding?: boolean
+  hoverable?: boolean
 }
 
 withDefaults(defineProps<Props>(), {
-  padding: true
+  padding: true,
+  hoverable: false
 })
 </script>
 
 <template>
-  <div class="bg-white border border-slate-200 rounded-lg" :class="padding && 'p-5'">
+  <div
+    class="bg-white border border-slate-200 rounded-lg transition-all duration-150"
+    :class="[padding && 'p-5', hoverable && 'hover:border-blue-200 hover:shadow-sm cursor-pointer']"
+  >
     <slot />
   </div>
 </template>

@@ -44,42 +44,45 @@ async function login(): Promise<void> {
 
 <template>
   <div class="h-screen w-screen bg-slate-50 flex items-center justify-center">
-    <div class="w-full max-w-sm">
+    <div class="w-full max-w-sm px-4">
       <!-- Logo -->
       <div class="flex flex-col items-center mb-8">
-        <div class="w-14 h-14 rounded-xl bg-blue-600 flex items-center justify-center mb-4">
-          <Store class="w-8 h-8 text-white" />
+        <div
+          class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center mb-4 shadow-lg shadow-blue-600/20"
+        >
+          <Store class="w-7 h-7 text-white" />
         </div>
-        <h1 class="text-xl font-semibold text-slate-900">RetailPOS</h1>
-        <p class="text-sm text-slate-500">Sign in to your account</p>
+        <h1 class="text-xl font-bold text-slate-900">RetailPOS</h1>
+        <p class="text-sm text-slate-500 mt-1">Sign in to your account</p>
       </div>
 
       <!-- Login Card -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
         <form class="space-y-4" @submit.prevent="login">
           <div>
-            <label class="text-sm font-medium text-slate-700 mb-1.5 block">Username</label>
+            <label class="text-[13px] font-medium text-slate-700 mb-1.5 block">Username</label>
             <input
               v-model="username"
               type="text"
               placeholder="Enter username"
               autofocus
-              class="w-full h-10 px-3 border border-slate-300 rounded-md text-sm focus:border-blue-400"
+              class="w-full h-10 px-3.5 border border-slate-300 rounded-lg text-sm focus:border-blue-400 bg-white"
             />
           </div>
 
           <div>
-            <label class="text-sm font-medium text-slate-700 mb-1.5 block">Password</label>
+            <label class="text-[13px] font-medium text-slate-700 mb-1.5 block">Password</label>
             <div class="relative">
               <input
                 v-model="password"
                 :type="showPassword ? 'text' : 'password'"
                 placeholder="Enter password"
-                class="w-full h-10 px-3 pr-10 border border-slate-300 rounded-md text-sm focus:border-blue-400"
+                class="w-full h-10 px-3.5 pr-10 border border-slate-300 rounded-lg text-sm focus:border-blue-400 bg-white"
               />
               <button
                 type="button"
-                class="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                tabindex="-1"
                 @click="showPassword = !showPassword"
               >
                 <EyeOff v-if="showPassword" class="w-4 h-4" />
@@ -88,12 +91,17 @@ async function login(): Promise<void> {
             </div>
           </div>
 
-          <p v-if="error" class="text-sm text-red-600">{{ error }}</p>
+          <div
+            v-if="error"
+            class="flex items-center gap-2 px-3 py-2 bg-red-50 border border-red-100 rounded-lg"
+          >
+            <p class="text-sm text-red-600">{{ error }}</p>
+          </div>
 
           <button
             type="submit"
             :disabled="loading"
-            class="w-full h-10 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+            class="w-full h-10 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all duration-150 active:scale-[0.98] shadow-sm flex items-center justify-center gap-2"
           >
             <svg
               v-if="loading"
@@ -120,6 +128,11 @@ async function login(): Promise<void> {
           </button>
         </form>
       </div>
+
+      <!-- Footer -->
+      <p class="text-center text-[11px] text-slate-400 mt-6">
+        RetailPOS v1.0 &mdash; Offline-first POS system
+      </p>
     </div>
   </div>
 </template>
