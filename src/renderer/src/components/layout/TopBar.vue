@@ -60,9 +60,7 @@ function toggleTheme(): void {
 
       <!-- User -->
       <div class="flex items-center gap-2.5 ml-2 pl-3 border-l border-slate-200">
-        <div
-          class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-sm"
-        >
+        <div class="avatar-circle w-8 h-8">
           <span class="text-xs font-semibold text-white">
             {{ authStore.user?.name?.charAt(0)?.toUpperCase() || 'U' }}
           </span>

@@ -235,7 +235,7 @@ function formatCurrency(amount: number): string {
             class="flex-shrink-0 h-7 px-3 rounded-full text-[11px] font-medium transition-all duration-150"
             :class="
               selectedCategory === null
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-blue-600 text-white'
                 : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
             "
             @click="selectedCategory = null"
@@ -248,7 +248,7 @@ function formatCurrency(amount: number): string {
             class="flex-shrink-0 h-7 px-3 rounded-full text-[11px] font-medium transition-all duration-150"
             :class="
               selectedCategory === cat.id
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-blue-600 text-white'
                 : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
             "
             @click="selectedCategory = cat.id"
@@ -274,7 +274,7 @@ function formatCurrency(amount: number): string {
           <button
             v-for="product in filteredProducts"
             :key="product.id"
-            class="bg-white border border-slate-200 rounded-lg p-3.5 text-left hover:border-blue-300 hover:shadow-sm transition-all duration-150 group"
+            class="bg-white border border-slate-200 rounded-lg p-3.5 text-left hover:border-blue-300 transition-all duration-150 group"
             @click="addProductToCart(product)"
           >
             <div
@@ -414,7 +414,7 @@ function formatCurrency(amount: number): string {
         </div>
         <button
           :disabled="posStore.items.length === 0"
-          class="w-full h-11 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 active:scale-[0.98] text-sm flex items-center justify-center gap-2 shadow-sm"
+          class="btn-primary w-full h-11 text-sm font-semibold"
           @click="openPayment"
         >
           <CreditCard class="w-4 h-4" />
@@ -425,12 +425,8 @@ function formatCurrency(amount: number): string {
     </div>
 
     <!-- Payment Modal -->
-    <div
-      v-if="showPaymentModal"
-      class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
-      @click.self="showPaymentModal = false"
-    >
-      <div class="bg-white rounded-xl w-[420px] shadow-2xl border border-slate-200">
+    <div v-if="showPaymentModal" class="modal-overlay" @click.self="showPaymentModal = false">
+      <div class="bg-white rounded-xl w-[420px] border border-slate-200">
         <div class="flex items-center justify-between p-5 border-b border-slate-100">
           <h3 class="text-base font-bold text-slate-900">Payment</h3>
           <button
@@ -536,7 +532,7 @@ function formatCurrency(amount: number): string {
           </button>
           <button
             :disabled="loading || paidAmount <= 0"
-            class="flex-1 h-10 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 disabled:opacity-50 transition-all duration-150 active:scale-[0.98] shadow-sm flex items-center justify-center gap-2"
+            class="btn-primary flex-1 h-10 text-sm font-semibold"
             @click="completeSale"
           >
             <Check v-if="!loading" class="w-4 h-4" />

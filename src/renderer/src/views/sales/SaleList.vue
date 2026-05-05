@@ -142,20 +142,14 @@ function formatDate(date: string): string {
             </td>
             <td class="px-4 py-3 text-center">
               <span
-                class="text-[11px] font-semibold px-2 py-0.5 rounded-full capitalize"
-                :class="
-                  sale.paymentStatus === 'paid'
-                    ? 'bg-green-50 text-green-700 ring-1 ring-inset ring-green-200'
-                    : 'bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-200'
-                "
+                class="badge capitalize"
+                :class="sale.paymentStatus === 'paid' ? 'badge-success' : 'badge-warning'"
               >
                 {{ sale.paymentStatus }}
               </span>
             </td>
             <td class="px-4 py-3 text-center">
-              <span
-                class="text-[11px] font-semibold px-2 py-0.5 rounded-full capitalize bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-200"
-              >
+              <span class="badge badge-info capitalize">
                 {{ sale.status }}
               </span>
             </td>
