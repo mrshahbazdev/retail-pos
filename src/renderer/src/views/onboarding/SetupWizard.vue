@@ -412,7 +412,13 @@ function goToDashboard(): void {
           <p class="text-sm text-slate-500 mb-6">
             Your {{ businessName }} POS system is ready. Start adding products and making sales.
           </p>
-          <button class="btn-primary h-10 px-6" @click="goToDashboard">Go to Dashboard</button>
+          <button
+            class="btn btn-primary px-4 d-inline-flex align-items-center gap-2"
+            style="height: 40px"
+            @click="goToDashboard"
+          >
+            Go to Dashboard
+          </button>
         </div>
 
         <!-- Footer Navigation -->
@@ -433,7 +439,7 @@ function goToDashboard(): void {
           <button
             v-if="step < 3"
             :disabled="!canProceed"
-            class="btn-primary h-9 px-5 text-sm"
+            class="btn btn-primary px-4 text-sm d-inline-flex align-items-center gap-2"
             @click="step++"
           >
             Continue
@@ -443,7 +449,7 @@ function goToDashboard(): void {
           <button
             v-if="step === 3"
             :disabled="!canProceed || loading"
-            class="btn-primary h-9 px-5 text-sm"
+            class="btn btn-primary px-4 text-sm d-inline-flex align-items-center gap-2"
             @click="completeSetup"
           >
             <svg

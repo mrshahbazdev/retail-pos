@@ -223,17 +223,13 @@ async function saveProduct(): Promise<void> {
 
       <!-- Actions -->
       <div class="flex items-center gap-3">
-        <button
-          type="button"
-          class="h-9 px-4 border border-slate-300 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
-          @click="router.back()"
-        >
+        <button type="button" class="btn btn-outline-secondary text-sm" @click="router.back()">
           Cancel
         </button>
         <button
           type="submit"
           :disabled="loading || !form.name"
-          class="btn-primary h-9 px-5 text-sm"
+          class="btn btn-primary px-4 text-sm d-inline-flex align-items-center gap-2"
         >
           <Save class="w-4 h-4" />
           {{ loading ? 'Saving...' : 'Save Product' }}

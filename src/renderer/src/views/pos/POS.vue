@@ -414,7 +414,8 @@ function formatCurrency(amount: number): string {
         </div>
         <button
           :disabled="posStore.items.length === 0"
-          class="btn-primary w-full h-11 text-sm font-semibold"
+          class="btn btn-primary w-full text-sm font-semibold d-flex align-items-center justify-content-center gap-2"
+          style="height: 44px"
           @click="openPayment"
         >
           <CreditCard class="w-4 h-4" />
@@ -525,14 +526,15 @@ function formatCurrency(amount: number): string {
 
         <div class="flex gap-3 p-5 border-t border-slate-100">
           <button
-            class="flex-1 h-10 border border-slate-300 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+            class="btn btn-outline-secondary flex-1 text-sm"
             @click="showPaymentModal = false"
           >
             Cancel
           </button>
           <button
             :disabled="loading || paidAmount <= 0"
-            class="btn-primary flex-1 h-10 text-sm font-semibold"
+            class="btn btn-primary flex-1 text-sm font-semibold d-flex align-items-center justify-content-center gap-2"
+            style="height: 40px"
             @click="completeSale"
           >
             <Check v-if="!loading" class="w-4 h-4" />

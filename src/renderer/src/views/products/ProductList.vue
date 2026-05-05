@@ -58,7 +58,10 @@ function formatCurrency(amount: number): string {
         <h1 class="text-xl font-bold text-slate-900">Products</h1>
         <p class="text-[13px] text-slate-500 mt-0.5">{{ total }} products total</p>
       </div>
-      <button class="btn-primary" @click="router.push('/products/create')">
+      <button
+        class="btn btn-primary d-inline-flex align-items-center gap-2"
+        @click="router.push('/products/create')"
+      >
         <Plus class="w-4 h-4" />
         Add Product
       </button>
@@ -78,15 +81,11 @@ function formatCurrency(amount: number): string {
           @input="loadProducts()"
         />
       </div>
-      <button
-        class="h-9 px-3 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition-colors flex items-center gap-2"
-      >
+      <button class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-2">
         <Filter class="w-4 h-4" />
         Filters
       </button>
-      <button
-        class="h-9 px-3 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition-colors flex items-center gap-2"
-      >
+      <button class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-2">
         <Download class="w-4 h-4" />
         Export
       </button>

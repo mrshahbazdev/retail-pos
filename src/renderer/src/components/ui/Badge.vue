@@ -14,19 +14,37 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const badgeClass = computed(() => {
-  return ['badge', `badge-${props.variant}`, props.size === 'md' && 'badge-md']
+  const variantMap: Record<string, string> = {
+    default: 'badge-secondary',
+    success: 'badge-success',
+    danger: 'badge-danger',
+    warning: 'badge-warning',
+    info: 'badge-info'
+  }
+  return ['badge', variantMap[props.variant], props.size === 'md' && 'px-3 py-1']
     .filter(Boolean)
     .join(' ')
 })
 
-const dotClass = computed(() => {
-  return `badge-dot badge-dot-${props.variant}`
+const dotColor = computed(() => {
+  const map: Record<string, string> = {
+    default: '#94a3b8',
+    success: '#22c55e',
+    danger: '#ef4444',
+    warning: '#f59e0b',
+    info: '#06b6d4'
+  }
+  return map[props.variant]
 })
 </script>
 
 <template>
   <span :class="badgeClass">
-    <span v-if="dot" :class="dotClass"></span>
+    <span
+      v-if="dot"
+      class="d-inline-block rounded-circle"
+      :style="{ width: '6px', height: '6px', backgroundColor: dotColor }"
+    ></span>
     <slot />
   </span>
 </template>

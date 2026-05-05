@@ -201,7 +201,7 @@ function formatTime(date: string): string {
         <div class="bg-white rounded-lg border border-slate-200">
           <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-100">
             <h2 class="text-[13px] font-semibold text-slate-900">Low Stock Alerts</h2>
-            <span v-if="dashboard.lowStockProducts.length > 0" class="badge badge-danger">
+            <span v-if="dashboard.lowStockProducts.length > 0" class="badge badge-danger ms-2">
               {{ dashboard.lowStockProducts.length }}
             </span>
           </div>

@@ -9,7 +9,7 @@ import { ShoppingBag, Plus } from 'lucide-vue-next'
         <h1 class="text-xl font-bold text-slate-900">Purchases</h1>
         <p class="text-[13px] text-slate-500 mt-0.5">Track purchase orders from suppliers</p>
       </div>
-      <button class="btn-primary">
+      <button class="btn btn-primary d-inline-flex align-items-center gap-2">
         <Plus class="w-4 h-4" />
         New Purchase
       </button>

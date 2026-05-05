@@ -56,9 +56,7 @@ function formatDate(date: string): string {
         <h1 class="text-xl font-bold text-slate-900">Sales History</h1>
         <p class="text-[13px] text-slate-500 mt-0.5">{{ total }} sales total</p>
       </div>
-      <button
-        class="h-9 px-3 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition-colors flex items-center gap-2"
-      >
+      <button class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-2">
         <Download class="w-4 h-4" />
         Export
       </button>
@@ -142,14 +140,14 @@ function formatDate(date: string): string {
             </td>
             <td class="px-4 py-3 text-center">
               <span
-                class="badge capitalize"
+                class="badge text-capitalize"
                 :class="sale.paymentStatus === 'paid' ? 'badge-success' : 'badge-warning'"
               >
                 {{ sale.paymentStatus }}
               </span>
             </td>
             <td class="px-4 py-3 text-center">
-              <span class="badge badge-info capitalize">
+              <span class="badge badge-info text-capitalize">
                 {{ sale.status }}
               </span>
             </td>

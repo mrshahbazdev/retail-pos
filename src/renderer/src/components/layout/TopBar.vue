@@ -54,13 +54,16 @@ function toggleTheme(): void {
       >
         <Bell class="w-4 h-4" />
         <span
-          class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"
+          class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-2 border-white"
         />
       </button>
 
       <!-- User -->
       <div class="flex items-center gap-2.5 ml-2 pl-3 border-l border-slate-200">
-        <div class="avatar-circle w-8 h-8">
+        <div
+          class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white"
+          style="width: 32px; height: 32px"
+        >
           <span class="text-xs font-semibold text-white">
             {{ authStore.user?.name?.charAt(0)?.toUpperCase() || 'U' }}
           </span>
