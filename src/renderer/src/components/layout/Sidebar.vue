@@ -58,53 +58,63 @@ function logout(): void {
     :class="collapsed ? 'w-[68px]' : 'w-[240px]'"
   >
     <!-- Logo -->
-    <div class="flex items-center gap-3 px-4 h-16 border-b border-slate-200">
-      <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+    <div class="flex items-center gap-3 px-4 h-16 border-b border-slate-100">
+      <div
+        class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center flex-shrink-0 shadow-sm"
+      >
         <Store class="w-5 h-5 text-white" />
       </div>
       <div v-if="!collapsed" class="flex flex-col overflow-hidden">
-        <span class="text-sm font-semibold text-slate-900 truncate">
+        <span class="text-sm font-semibold text-slate-900 truncate leading-tight">
           {{ authStore.business?.name || 'RetailPOS' }}
         </span>
-        <span class="text-xs text-slate-500 truncate capitalize">
+        <span class="text-[11px] text-slate-400 truncate capitalize">
           {{ authStore.business?.businessType || 'retail' }}
         </span>
       </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="flex-1 py-3 px-2 space-y-1 overflow-y-auto">
+    <nav class="flex-1 py-3 px-2 space-y-0.5 overflow-y-auto">
       <button
         v-for="item in navItems"
         :key="item.key"
-        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors duration-100"
+        class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-150 relative"
         :class="
           isActive(item.route)
-            ? 'bg-blue-50 text-blue-600'
-            : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+            ? 'bg-blue-50 text-blue-700'
+            : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'
         "
         @click="navigate(item.route)"
       >
-        <component :is="item.icon" class="w-5 h-5 flex-shrink-0" />
+        <span
+          v-if="isActive(item.route)"
+          class="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-blue-600 rounded-r-full"
+        />
+        <component
+          :is="item.icon"
+          class="w-[18px] h-[18px] flex-shrink-0"
+          :class="isActive(item.route) ? 'text-blue-600' : ''"
+        />
         <span v-if="!collapsed" class="truncate">{{ item.label }}</span>
       </button>
     </nav>
 
     <!-- Bottom -->
-    <div class="border-t border-slate-200 p-2 space-y-1">
+    <div class="border-t border-slate-100 p-2 space-y-0.5">
       <button
-        class="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+        class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] text-slate-400 hover:bg-slate-50 hover:text-slate-600 transition-colors"
         @click="collapsed = !collapsed"
       >
-        <ChevronLeft v-if="!collapsed" class="w-5 h-5 flex-shrink-0" />
-        <ChevronRight v-else class="w-5 h-5 flex-shrink-0" />
+        <ChevronLeft v-if="!collapsed" class="w-[18px] h-[18px] flex-shrink-0" />
+        <ChevronRight v-else class="w-[18px] h-[18px] flex-shrink-0" />
         <span v-if="!collapsed">Collapse</span>
       </button>
       <button
-        class="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm text-slate-500 hover:bg-red-50 hover:text-red-600 transition-colors"
+        class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] text-slate-400 hover:bg-red-50 hover:text-red-600 transition-colors"
         @click="logout"
       >
-        <LogOut class="w-5 h-5 flex-shrink-0" />
+        <LogOut class="w-[18px] h-[18px] flex-shrink-0" />
         <span v-if="!collapsed">Logout</span>
       </button>
     </div>

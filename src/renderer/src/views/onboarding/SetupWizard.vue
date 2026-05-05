@@ -192,7 +192,7 @@ function goToDashboard(): void {
       <div class="flex items-center justify-center gap-2 mb-8">
         <template v-for="s in totalSteps" :key="s">
           <div
-            class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors"
+            class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-200"
             :class="
               s < step
                 ? 'bg-blue-600 text-white'
@@ -206,7 +206,7 @@ function goToDashboard(): void {
           </div>
           <div
             v-if="s < totalSteps"
-            class="w-12 h-0.5 transition-colors"
+            class="w-12 h-0.5 transition-all duration-200"
             :class="s < step ? 'bg-blue-600' : 'bg-slate-200'"
           />
         </template>
@@ -236,7 +236,7 @@ function goToDashboard(): void {
             <button
               v-for="bt in businessTypes"
               :key="bt.value"
-              class="flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-colors text-center"
+              class="flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all duration-150 text-center"
               :class="
                 businessType === bt.value
                   ? 'border-blue-600 bg-blue-50'
@@ -413,7 +413,7 @@ function goToDashboard(): void {
             Your {{ businessName }} POS system is ready. Start adding products and making sales.
           </p>
           <button
-            class="h-10 px-6 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors"
+            class="h-10 px-6 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-150 active:scale-[0.98] shadow-sm"
             @click="goToDashboard"
           >
             Go to Dashboard
@@ -438,7 +438,7 @@ function goToDashboard(): void {
           <button
             v-if="step < 3"
             :disabled="!canProceed"
-            class="flex items-center gap-1 h-9 px-5 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            class="flex items-center gap-1 h-9 px-5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 active:scale-[0.98] shadow-sm"
             @click="step++"
           >
             Continue
@@ -448,7 +448,7 @@ function goToDashboard(): void {
           <button
             v-if="step === 3"
             :disabled="!canProceed || loading"
-            class="flex items-center gap-2 h-9 px-5 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            class="flex items-center gap-2 h-9 px-5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 active:scale-[0.98] shadow-sm"
             @click="completeSetup"
           >
             <svg

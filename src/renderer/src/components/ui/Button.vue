@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const classes = computed(() => {
   const base =
-    'inline-flex items-center justify-center gap-2 font-medium rounded-md transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-blue-600 disabled:opacity-50 disabled:cursor-not-allowed'
+    'inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-blue-600 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]'
 
   const sizes = {
     sm: 'h-8 px-3 text-xs',
@@ -28,12 +28,12 @@ const classes = computed(() => {
   }
 
   const variants = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800',
+    primary: 'bg-blue-600 text-white shadow-sm hover:bg-blue-700 active:bg-blue-800',
     secondary:
-      'bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 active:bg-slate-100',
+      'bg-white text-slate-700 border border-slate-300 shadow-sm hover:bg-slate-50 active:bg-slate-100',
     ghost: 'text-slate-600 hover:bg-slate-100 active:bg-slate-200',
-    danger: 'bg-red-600 text-white hover:bg-red-700 active:bg-red-800',
-    success: 'bg-green-600 text-white hover:bg-green-700 active:bg-green-800'
+    danger: 'bg-red-600 text-white shadow-sm hover:bg-red-700 active:bg-red-800',
+    success: 'bg-green-600 text-white shadow-sm hover:bg-green-700 active:bg-green-800'
   }
 
   return [base, sizes[props.size], variants[props.variant], props.fullWidth && 'w-full']
